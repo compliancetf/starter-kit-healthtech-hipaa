@@ -1,6 +1,6 @@
 # HealthTech Starter Kit - HIPAA + SOC 2
 
-Terraform configuration that deploys HIPAA-compliant AWS infrastructure for healthtech companies. Modules are sourced from the [compliance.tf](https://compliance.tf) registry, which validates HIPAA Security Rule and SOC 2 controls at `terraform plan` time — non-compliant configurations fail before they can be applied.
+Terraform configuration that deploys HIPAA-compliant AWS infrastructure for healthtech companies. Modules are sourced from the [compliance.tf registry](https://hipaa.compliance.tf), which validates HIPAA Security Rule and SOC 2 controls at `terraform plan` time — non-compliant configurations fail before they can be applied.
 
 ## Architecture
 
@@ -44,6 +44,8 @@ terraform apply
 `terraform plan` fails if any required HIPAA controls are not satisfied — the error message names the specific control and the module that violated it. A clean plan with the default configuration produces about 140 resources.
 
 ## Module Inventory
+
+Every source below is a browsable page on the registry, with versions, inputs, and outputs - browse all modules at [hipaa.compliance.tf](https://hipaa.compliance.tf).
 
 | Module | Source | Version | Purpose | Key HIPAA Requirements |
 |--------|--------|---------|---------|------------------------|
