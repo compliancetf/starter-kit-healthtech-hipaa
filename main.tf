@@ -1,10 +1,10 @@
 ################################################################################
-# HIPAA + SOC 2 Compliance Starter Kit - HealthTech
+# HIPAA Compliance Starter Kit - HealthTech
 #
 # Pre-composed infrastructure for healthtech companies (telehealth, EHR
 # integration, clinical decision support) handling Protected Health Information.
 # All modules source from the compliance.tf registry and enforce HIPAA Security
-# Rule and SOC 2 controls at terraform plan time.
+# Rule controls at terraform plan time.
 #
 # HIPAA Security Rule requirements enforced automatically:
 #   164.312(a)(1)     - Access control (IAM auth, no public PHI access)
@@ -520,7 +520,7 @@ module "dynamodb" {
 }
 
 ################################################################################
-# Storage - S3 PHI (object lock, 6-year minimum retention, HIPAA 164.312(c)(1))
+# Storage - S3 PHI (object lock for integrity, HIPAA 164.312(c)(1); retention floor from 164.316(b)(2)(i), see variables.tf)
 ################################################################################
 
 module "s3_bucket_phi" {
@@ -538,7 +538,7 @@ module "s3_bucket_phi" {
     rule = {
       default_retention = {
         mode  = "GOVERNANCE"
-        # HIPAA minimum is 6 years; 7 is industry standard - set via phi_retention_years variable
+        # 6-year floor tracks the HIPAA documentation retention minimum (164.316(b)(2)(i)); clinical retention is state law - set via phi_retention_years
         years = var.phi_retention_years
       }
     }

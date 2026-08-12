@@ -1,5 +1,5 @@
 # =============================================================================
-# HealthTech Starter Kit - HIPAA + SOC 2
+# HealthTech Starter Kit - HIPAA
 #
 # Copy this file to terraform.tfvars and fill in the required values.
 # Lines marked CHANGEME must be updated before running terraform plan.
