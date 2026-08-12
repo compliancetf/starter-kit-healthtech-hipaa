@@ -181,13 +181,13 @@ variable "redis_node_type" {
 ################################################################################
 
 variable "phi_retention_years" {
-  description = "PHI data retention in years. HIPAA requires 6 years minimum; 7 is recommended."
+  description = "PHI data retention in years. This kit imposes a conservative 6-year floor matching the federal minimum for HIPAA Security Rule documentation (45 CFR 164.316(b)(2)(i)); clinical record retention is governed by state law (commonly 5-10 years). Default 7."
   type        = number
   default     = 7
 
   validation {
     condition     = var.phi_retention_years >= 6
-    error_message = "HIPAA requires a minimum of 6 years PHI retention."
+    error_message = "phi_retention_years must be at least 6 - the kit's conservative floor aligned with the HIPAA documentation retention minimum."
   }
 }
 
